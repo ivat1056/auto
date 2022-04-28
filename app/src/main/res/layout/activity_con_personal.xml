@@ -3,52 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@drawable/ert"
-    tools:context=".admin_login">
-
+    android:layout_height="match_parent"
+    tools:context=".ConPersonal">
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etDol"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Название услиги"
+        android:hint="Должность"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorLink="@color/black"
 
-        app:layout_constraintEnd_toStartOf="@id/etEmail"
+        app:layout_constraintEnd_toStartOf="@id/etFio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etFio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Цена"
+        android:hint="ФИО"
         android:textColor="@color/black"
         android:textAlignment="center"
 
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintStart_toEndOf="@id/etName"
+        app:layout_constraintStart_toEndOf="@id/etDol"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etAdres"
+        android:id="@+id/etXar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ФИО мастера"
+        android:hint="Характеристика сотрудника"
         android:textAlignment="center"
         android:textColor="@color/black"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmail" />
+        app:layout_constraintTop_toBottomOf="@id/etFio" />
     <TableLayout
         android:id="@+id/etBT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etAdres"
+        app:layout_constraintTop_toBottomOf="@id/etXar"
 
         >
         <TableRow android:layout_weight="1">
@@ -89,12 +88,11 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Контакты "
+        android:text="Назад "
         app:layout_constraintBottom_toTopOf="@id/dbOutput"
-        android:onClick="operation3"
+        android:onClick="operation4"
 
         app:layout_constraintTop_toBottomOf="@+id/etBT"
 
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

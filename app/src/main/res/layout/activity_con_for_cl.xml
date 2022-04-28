@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/ert"
     android:layout_height="match_parent"
-    tools:context=".Client">
-
-
+    android:background="@drawable/ert"
+    tools:context=".Con_for_Cl">
     <TableLayout
         android:id="@+id/dbOutput"
         android:layout_width="0dp"
@@ -23,28 +21,13 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Личный кабинет"
-        android:onClick="operation1"
+        android:onClick="operation13"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#6CCADC"
         app:layout_constraintTop_toBottomOf="@id/dbOutput" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Контакты "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="#6CCADC"
-        android:onClick="operation12"
-        app:layout_constraintTop_toBottomOf="@+id/dbOutput"
-        app:layout_constraintStart_toEndOf="@id/button"
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

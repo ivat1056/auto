@@ -16,28 +16,26 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class admin_login extends AppCompatActivity implements View.OnClickListener {
-    Button  btnAdd , btnClear;
-    EditText etName, etEmail, etAdres;
+public class ConPersonal extends AppCompatActivity implements View.OnClickListener {
+    Button btnAdd , btnClear;
+    EditText etDol, etFio, etXar;
 
     DBHelper2 dbHelper;
     SQLiteDatabase database;
     ContentValues contentValues;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_login);
-
-       btnAdd = (Button) findViewById(R.id.btnAdd);
+        setContentView(R.layout.activity_con_personal);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
 
         btnClear = (Button) findViewById(R.id.btnClear);
         btnClear.setOnClickListener(this);
 
-        etName = (EditText) findViewById(R.id.etName);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etAdres = (EditText) findViewById(R.id.etAdres);
+        etDol = (EditText) findViewById(R.id.etDol);
+        etFio = (EditText) findViewById(R.id.etFio);
+        etXar = (EditText) findViewById(R.id.etXar);
 
         dbHelper = new DBHelper2(this);
         database = dbHelper.getWritableDatabase();
@@ -45,40 +43,40 @@ public class admin_login extends AppCompatActivity implements View.OnClickListen
 
         UpdateTable();
 
-        etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etDol.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
-                    etName.setHint("");
+                    etDol.setHint("");
                 else
-                    etName.setHint("ФИО");
+                    etDol.setHint("ФИО");
             }
         });
-        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etFio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
-                    etEmail.setHint("");
+                    etFio.setHint("");
                 else
-                    etEmail.setHint("Телефон");
+                    etFio.setHint("Телефон");
             }
         });
-        etAdres.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etXar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
-                    etAdres.setHint("");
+                    etXar.setHint("");
                 else
-                    etAdres.setHint("Адрес");
+                    etXar.setHint("Адрес");
             }
         });
     }
     public void UpdateTable() {
-        Cursor cursor = database.query(DBHelper2.TABLE_CONTACTS, null, null, null, null, null, null);
+        Cursor cursor = database.query(DBHelper2.TABLE_EMPLOEE, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
 
-            int idIndex = cursor.getColumnIndex(DBHelper2.KEY_ID);
-            int nameIndex = cursor.getColumnIndex(DBHelper2.KEY_NAME);
-            int mailIndex = cursor.getColumnIndex(DBHelper2.KEY_MAIL);
-            int adresIndex = cursor.getColumnIndex(DBHelper2.KEY_ADRES);
+            int idIndex = cursor.getColumnIndex(DBHelper2.KEY_ID1);
+            int nameIndex = cursor.getColumnIndex(DBHelper2.KEY_DOL);
+            int mailIndex = cursor.getColumnIndex(DBHelper2.KEY_FIO);
+            int adresIndex = cursor.getColumnIndex(DBHelper2.KEY_XAR);
             TableLayout dbOutput = findViewById(R.id.dbOutput);
             dbOutput.removeAllViews();
             do {
@@ -138,25 +136,25 @@ public class admin_login extends AppCompatActivity implements View.OnClickListen
             case R.id.btnAdd:
 
 
-                String name = etName.getText().toString();
-                String email = etEmail.getText().toString();
-                String adres = etAdres.getText().toString();
+                String name = etDol.getText().toString();
+                String email = etFio.getText().toString();
+                String adres = etXar.getText().toString();
                 contentValues = new ContentValues();
-                contentValues.put(DBHelper2.KEY_NAME, name);
-                contentValues.put(DBHelper2.KEY_MAIL, email);
-                contentValues.put(DBHelper2.KEY_ADRES, adres);
+                contentValues.put(DBHelper2.KEY_DOL, name);
+                contentValues.put(DBHelper2.KEY_FIO, email);
+                contentValues.put(DBHelper2.KEY_XAR, adres);
 
 
-                database.insert(DBHelper2.TABLE_CONTACTS, null, contentValues);
-                etName.setText("");
-                etEmail.setText("");
-                etAdres.setText("");
+                database.insert(DBHelper2.TABLE_EMPLOEE, null, contentValues);
+                etDol.setText("");
+                etFio.setText("");
+                etXar.setText("");
                 UpdateTable();
                 break;
 
 
             case R.id.btnClear:
-                database.delete(DBHelper2.TABLE_CONTACTS, null, null);
+                database.delete(DBHelper2.TABLE_EMPLOEE, null, null);
 
                 TableLayout dbOutput = findViewById(R.id.dbOutput);
                 dbOutput.removeAllViews();
@@ -169,36 +167,36 @@ public class admin_login extends AppCompatActivity implements View.OnClickListen
                 outputDB.invalidate();
 
 
-                database.delete(DBHelper2.TABLE_CONTACTS, DBHelper2.KEY_ID + " = ?", new String[]{String.valueOf((v.getId()))});
+                database.delete(DBHelper2.TABLE_EMPLOEE, DBHelper2.KEY_ID1 + " = ?", new String[]{String.valueOf((v.getId()))});
                 contentValues = new ContentValues();
-                Cursor cursorUpdater = database.query(DBHelper2.TABLE_CONTACTS, null, null, null, null, null, null);
+                Cursor cursorUpdater = database.query(DBHelper2.TABLE_EMPLOEE, null, null, null, null, null, null);
                 if (cursorUpdater.moveToFirst()) {
-                    int idIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_ID);
-                    int nameIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_NAME);
-                    int mailIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_MAIL);
-                    int adresIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_ADRES);
+                    int idIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_ID1);
+                    int nameIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_DOL);
+                    int mailIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_FIO);
+                    int adresIndex = cursorUpdater.getColumnIndex(DBHelper2.KEY_XAR);
                     int realID = 1;
                     do {
                         if (cursorUpdater.getInt(idIndex) > realID) {
-                            contentValues.put(DBHelper2.KEY_ID, realID);
-                            contentValues.put(DBHelper2.KEY_ID, cursorUpdater.getString(nameIndex));
-                            contentValues.put(DBHelper2.KEY_ID, cursorUpdater.getString(mailIndex));
-                            contentValues.put(DBHelper2.KEY_ID, cursorUpdater.getString(adresIndex));
-                            database.replace(DBHelper2.TABLE_CONTACTS, null, contentValues);
+                            contentValues.put(DBHelper2.KEY_ID1, realID);
+                            contentValues.put(DBHelper2.KEY_ID1, cursorUpdater.getString(nameIndex));
+                            contentValues.put(DBHelper2.KEY_ID1, cursorUpdater.getString(mailIndex));
+                            contentValues.put(DBHelper2.KEY_ID1, cursorUpdater.getString(adresIndex));
+                            database.replace(DBHelper2.TABLE_EMPLOEE, null, contentValues);
                         }
                         realID++;
                     } while(cursorUpdater.moveToNext());
                     if(cursorUpdater.moveToLast() && (cursorUpdater.getInt(idIndex) == realID)){
-                        database.delete(DBHelper2.TABLE_CONTACTS, DBHelper2.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idIndex)});
+                        database.delete(DBHelper2.TABLE_EMPLOEE, DBHelper2.KEY_ID1 + " = ?", new String[]{cursorUpdater.getString(idIndex)});
                     }
                     UpdateTable();
                 }
                 break;
         }
     }
-    public void operation3(View view) {
+    public void operation4(View view) {
 
-        Intent intent = new Intent(this, ConPersonal.class);
+        Intent intent = new Intent(this, admin_login.class);
         startActivity(intent);
     }
 }

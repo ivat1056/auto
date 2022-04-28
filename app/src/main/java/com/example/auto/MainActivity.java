@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SQLiteDatabase database;
     String adminL = "admin";
     String adminP = "1234";
+    public static String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         if(usernameField.getText().toString().equals(logCursor.getString(usernameIndex)) && passwordField.getText().toString().equals(logCursor.getString(passwordIndex)))
                         {
+                            user = logCursor.getString(usernameIndex);
                             startActivity(new Intent(this,Client.class));
                             logged=true;
                             break;
