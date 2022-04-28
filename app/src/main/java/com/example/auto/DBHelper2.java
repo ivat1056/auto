@@ -15,6 +15,14 @@ public class DBHelper2 extends SQLiteOpenHelper {
     public static final String KEY_MAIL = "mail";
     public static final String KEY_ADRES = "adres";
 
+
+    public static final String TABLE_EMPLOEE = "emploee";
+
+    public static final String KEY_ID1 = "_id1";
+    public static final String KEY_DOL = "dol";
+    public static final String KEY_FIO = "fio";
+    public static final String KEY_XAR = "xar";
+
     public DBHelper2(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -24,11 +32,19 @@ public class DBHelper2 extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID
                 + " integer primary key," + KEY_NAME + " text," + KEY_MAIL + " text," + KEY_ADRES + " text " + ")");
 
+        db.execSQL("create table " + TABLE_EMPLOEE + "(" + KEY_ID1
+                + " integer primary key," + KEY_DOL + " text," + KEY_FIO + " text," + KEY_XAR + " text " + ")");
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + TABLE_CONTACTS);
+
+        onCreate(db);
+
+        db.execSQL("drop table if exists " + TABLE_EMPLOEE);
 
         onCreate(db);
 

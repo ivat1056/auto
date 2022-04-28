@@ -8,6 +8,15 @@
         <entry key="..\:/auto/app/src/main/res/layout/activity_datebase1.xml" value="0.3625" />
         <entry key="..\:/auto/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
         <entry key="..\:/auto/app/src/main/res/layout/activity_main2.xml" value="0.358695652173913" />
+        <entry key="..\:/shop/app/src/main/res/drawable/ic_launcher_background.xml" value="0.24" />
+        <entry key="..\:/shop/app/src/main/res/layout/activity_admin_login.xml" value="0.33" />
+        <entry key="..\:/shop/app/src/main/res/layout/activity_client.xml" value="0.25" />
+        <entry key="..\:/shop/app/src/main/res/layout/activity_con_for_cl.xml" value="0.1762917933130699" />
+        <entry key="..\:/shop/app/src/main/res/layout/activity_con_personal.xml" value="0.3625" />
+        <entry key="..\:/shop/app/src/main/res/layout/activity_kabinet_client.xml" value="0.3625" />
+        <entry key="..\:/shop/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/shop/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24" />
+        <entry key="..\:/shop/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.24" />
       </map>
     </option>
   </component>
